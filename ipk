@@ -1,0 +1,28 @@
+#!/usr/bin/python3
+import requests
+import sys
+import socket
+
+ip =  str(sys.argv[1])
+
+def isplk(ip):
+
+    req = 'http://ip-api.com/json/{}'.format(ip)
+    r = requests.get(req)
+    # print(r.json())
+    # print(r.status_code)
+    
+    if r.json()['status'] == "fail":
+        print("\t")
+        print("Request failed \nInvalid query :{}".format(ip))
+    else:
+        print("\t----------------------------")
+        print("\tISP     :: {}".format(r.json()['isp']))
+        print("\tORG     :: {}".format(r.json()['org']))
+        print("\tCountry :: {}".format(r.json()['country']))
+        print("\tH_name  :: {}".format(socket.getfqdn(ip)))
+        print("\t----------------------------")
+    # print("\n")
+
+
+isplk(ip)
