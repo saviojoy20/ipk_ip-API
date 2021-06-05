@@ -1,5 +1,7 @@
 # A command line tool for IP lookup
 
+A command line  IP lookup program in python
+
 Usage
 ------
 
@@ -18,7 +20,6 @@ Sample Output
 -------------
 
 ```console
-
 savio@savio-HP:~$ ipk 8.8.8.8
 	----------------------------
 	ISP     :: Google LLC
@@ -26,11 +27,10 @@ savio@savio-HP:~$ ipk 8.8.8.8
 	Country :: United States
 	H_name  :: dns.google
 	----------------------------
-savio@savio-HP:~$ ipk 8.8.
+savio@savio-HP:~$ ipk 8.8
 	
-Request failed 
-Invalid query :8.8.
-
+	Request failed 
+	Invalid query :8.8
 
 ````
 
