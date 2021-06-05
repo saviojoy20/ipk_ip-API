@@ -3,18 +3,35 @@ import requests
 import sys
 import socket
 
+from requests.exceptions import Timeout
+
+
 ip =  str(sys.argv[1])
 
-def isplk(ip):
+
+def ipLkup(ip):
 
     req = 'http://ip-api.com/json/{}'.format(ip)
-    r = requests.get(req)
+    
+    try:
+
+        r = requests.get(req,timeout=4)
+    except requests.exceptions.Timeout:
+        print("Timeout :(")
+        exit()
+
+    except requests.exceptions.RequestException :
+        print("error :(")    
+        exit()
     # print(r.json())
     # print(r.status_code)
-    
+
+
+
+    #checking the status from the API 
     if r.json()['status'] == "fail":
         print("\t")
-        print("Request failed \nInvalid query :{}".format(ip))
+        print("\tRequest failed \n\tInvalid query :{}".format(ip))
     else:
         print("\t----------------------------")
         print("\tISP     :: {}".format(r.json()['isp']))
@@ -25,4 +42,4 @@ def isplk(ip):
     # print("\n")
 
 
-isplk(ip)
+ipLkup(ip)
